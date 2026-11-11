@@ -286,15 +286,18 @@ footer {
   font-size: 13px;
 }
 
-/* Cinematic scroll animations */
+
+/* CINEMATIC SCROLL ZOOM ANIMATIONS */
+
 .reveal {
   opacity: 0;
-  transform: translateY(45px) scale(.98);
-  filter: blur(5px);
+  transform: translateY(65px) scale(0.82);
+  filter: blur(8px);
   transition:
-    opacity .9s ease,
-    transform .9s cubic-bezier(.2,.7,.2,1),
-    filter .9s ease;
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1s ease;
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -303,21 +306,35 @@ footer {
   filter: blur(0);
 }
 
-.reveal-left {
-  transform: translateX(-45px);
+/* Cards appear one after another */
+.grid > .reveal:nth-child(1) {
+  transition-delay: 0s;
 }
 
-.reveal-left.visible { transform: translateX(0); }
-
-.reveal-right {
-  transform: translateX(45px);
+.grid > .reveal:nth-child(2) {
+  transition-delay: 0.15s;
 }
 
-.reveal-right.visible { transform: translateX(0); }
+.grid > .reveal:nth-child(3) {
+  transition-delay: 0.3s;
+}
 
-.delay-1 { transition-delay: .12s; }
-.delay-2 { transition-delay: .24s; }
-.delay-3 { transition-delay: .36s; }
+.grid > .reveal:nth-child(4) {
+  transition-delay: 0.45s;
+}
+
+/* Smooth zoom for smaller screens too */
+@media (max-width: 700px) {
+  .reveal {
+    transform: translateY(40px) scale(0.90);
+    transition-duration: 0.85s;
+  }
+
+  .reveal.visible {
+    transform: translateY(0) scale(1);
+  }
+}
+
 
 .hero-content {
   animation: heroEnter 1.2s ease both;
