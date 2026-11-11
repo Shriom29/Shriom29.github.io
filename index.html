@@ -37,20 +37,66 @@ button {font:inherit}
   background:linear-gradient(90deg,var(--blue),var(--violet));
   z-index:1000;
 }
+
 .ambient {
-  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  overflow:hidden;
   background:
-    radial-gradient(ellipse at 15% 20%,rgba(41,105,190,.20),transparent 42%),
-    radial-gradient(ellipse at 85% 70%,rgba(111,66,190,.16),transparent 40%),
-    linear-gradient(135deg,#080b14,#0b1020 55%,#090b16);
+    radial-gradient(ellipse at 50% 45%, rgba(22,75,145,.30), transparent 48%),
+    radial-gradient(ellipse at 15% 15%, rgba(55,120,210,.20), transparent 42%),
+    radial-gradient(ellipse at 85% 75%, rgba(115,65,210,.20), transparent 45%),
+    linear-gradient(135deg,#050914,#0a1429 50%,#080a18);
 }
+
+.ambient:before {
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 69px,
+      rgba(90,180,255,.09) 70px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 69px,
+      rgba(90,180,255,.09) 70px
+    );
+  transform:perspective(600px) rotateX(55deg) scale(1.5);
+  transform-origin:center;
+  animation:cyberGrid 18s linear infinite;
+  opacity:.5;
+}
+
 .ambient:after {
-  content:"";position:absolute;inset:0;opacity:.14;
-  background-image:linear-gradient(rgba(180,210,255,.09) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(180,210,255,.09) 1px,transparent 1px);
-  background-size:65px 65px;
-  mask-image:linear-gradient(to bottom,black,transparent 85%);
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(75,190,255,.45) 1px,transparent 3px),
+    radial-gradient(circle at 70% 60%,rgba(160,120,255,.5) 1px,transparent 3px),
+    radial-gradient(circle at 45% 85%,rgba(90,190,255,.4) 1px,transparent 3px);
+  background-size:180px 180px,240px 240px,200px 200px;
+  animation:particleDrift 20s linear infinite;
+  opacity:.65;
 }
+
+@keyframes cyberGrid {
+  from {background-position:0 0,0 0}
+  to {background-position:0 140px,140px 0}
+}
+
+@keyframes particleDrift {
+  from {background-position:0 0,0 0,0 0}
+  to {background-position:180px 180px,-240px 240px,200px -200px}
+}
+
 nav {
   position:fixed;top:22px;left:50%;transform:translateX(-50%);
   z-index:100;width:min(92%,850px);
