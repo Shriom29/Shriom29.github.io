@@ -424,16 +424,23 @@ function updateProgress() {
 window.addEventListener('scroll', updateProgress, {passive:true});
 updateProgress();
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+const revealItems = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+  revealItems.forEach(item => {
+    const position = item.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight * 0.88) {
+      item.classList.add('visible');
     }
   });
-}, {threshold:0.12});
+}
 
-document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+window.addEventListener('scroll', revealOnScroll, { passive: true });
+window.addEventListener('load', revealOnScroll);
+
+revealOnScroll();
 </script>
 </body>
 </html>
