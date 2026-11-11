@@ -45,10 +45,10 @@ button {font:inherit}
   z-index:-1;
   overflow:hidden;
   background:
-    radial-gradient(ellipse at 50% 45%, rgba(22,75,145,.30), transparent 48%),
-    radial-gradient(ellipse at 15% 15%, rgba(55,120,210,.20), transparent 42%),
-    radial-gradient(ellipse at 85% 75%, rgba(115,65,210,.20), transparent 45%),
-    linear-gradient(135deg,#050914,#0a1429 50%,#080a18);
+  radial-gradient(ellipse at 50% 45%, rgba(10,35,75,.16), transparent 48%),
+  radial-gradient(ellipse at 15% 15%, rgba(15,35,75,.10), transparent 42%),
+  radial-gradient(ellipse at 85% 75%, rgba(45,20,85,.12), transparent 45%),
+  linear-gradient(135deg,#01030a,#030713 50%,#02020a);
 }
 
 .ambient:before {
@@ -102,17 +102,20 @@ button {font:inherit}
   position:fixed;
   top:0;
   left:0;
-  width:420px;
-  height:420px;
+  width:600px;
+  height:600px;
   border-radius:50%;
   pointer-events:none;
   z-index:0;
-  opacity:.65;
-  background:radial-gradient(
-    circle,
-    rgba(75,180,255,.20) 0%,
-    rgba(125,90,255,.12) 35%,
-    transparent 70%
+  opacity: 1;
+
+background: radial-gradient(
+  circle,
+  rgba(80,190,255,.48) 0%,
+  rgba(110,90,255,.30) 35%,
+  rgba(70,120,255,.12) 60%,
+  transparent 75%
+);
   );
   transform:translate(-50%,-50%);
   transition:opacity .3s;
